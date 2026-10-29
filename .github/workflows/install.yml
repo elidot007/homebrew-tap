@@ -1,0 +1,33 @@
+# Installs the formula the way users do, on a Mac (Apple silicon) and on Linux x86_64.
+name: brew install
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  install:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Homebrew on PATH (Linux)
+        if: runner.os == 'Linux'
+        run: echo "/home/linuxbrew/.linuxbrew/bin" >> "$GITHUB_PATH"
+      - name: brew install elidot007/tap/keelkin
+        run: |
+          brew update --quiet
+          brew install elidot007/tap/keelkin
+      - name: Run it
+        env:
+          KEELKIN_HOME: ${{ runner.temp }}/kk-home
+          KK_LANG: en
+        run: |
+          kk --version
+          keelkin --version
+          kk upgrade
+          kk --help | head -5
+      - name: brew test
+        run: brew test keelkin
