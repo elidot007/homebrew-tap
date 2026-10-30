@@ -2,20 +2,20 @@
 class Keelkin < Formula
   desc "Agents across your own machines: locks, approvals, signed receipts"
   homepage "https://keelkin.elidot.com/docs"
-  version "0.3.5"
+  version "0.3.6"
   # No license line: the tarball also carries packages whose license is not decided yet (Q4);
   # each package's own license is in the SBOM next to the tarball.
   on_macos do
     on_arm do
-      url "https://keelkin.elidot.com/releases/keelkin-0.3.5-darwin-arm64.tgz"
-      sha256 "b1500cff6aec95e170fb47460e3501aa4a0f0211ce9db94cfdbd3bfc1a3654b6"
+      url "https://keelkin.elidot.com/releases/keelkin-0.3.6-darwin-arm64.tgz"
+      sha256 "3e0e0bad7b9f6cfdc2d45afc959627e0811de5197c1193b7e0a40660c50a037b"
     end
     depends_on arch: :arm64
   end
   on_linux do
     on_intel do
-      url "https://keelkin.elidot.com/releases/keelkin-0.3.5-linux-x64.tgz"
-      sha256 "d0bfc9a4e2b78a1aabb7fc617f3ab0626131a9abc638d4b9be5e35bd4e64ddb6"
+      url "https://keelkin.elidot.com/releases/keelkin-0.3.6-linux-x64.tgz"
+      sha256 "66c8a253e8574d17e194be26b0e2368cff2b10204271712f282b41e990443fbe"
     end
     depends_on arch: :x86_64
   end
