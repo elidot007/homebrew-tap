@@ -3,6 +3,10 @@ name: brew install
 on:
   push:
   workflow_dispatch:
+  # Daily: the formula depends on Homebrew's node@24 bottles, which can be missing for a
+  # while after a rebuild (x86_64 Linux, 2026-10-30). This shows when the user path works again.
+  schedule:
+    - cron: '23 6 * * *'
 permissions:
   contents: read
 jobs:
